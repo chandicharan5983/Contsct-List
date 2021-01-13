@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact List </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loader">
+        <img src="WMDx.gif" alt="loading">
+    </div>
+    
+
+    <H1>Contact List</H1>
+    <!--<a href="#" class="button1">Add Contact</a>-->
+    
+    <button type="button" onclick = "popup()" class="add-new-contact" >Add New Contact</button> 
+    <button id="show" onclick="getPosts()">Show Contacts</button>
+    <button class="find" onclick="findContact()">Find Contact</button>
+    <!-- <button class="updateBtn" onclick="updates()">Update Contact</button> -->
+    
+    <div class="findContact"></div>
+    <input type="text" id="findId" onfocus="this.value=''" placeholder="Enter Name">
+    <!-- <div id="output"></div> -->
+
+    <div class="conter" id="new-contact-fun">
+        <div class="container">
+            <div class="contact-text">Add Contact</div>
+            <form name="new-contact-page" id="form" method="POST">
+                <div class="contact-data">
+                    <label for="name"><b>Name:<b></label>
+                        <input type="text" id="name" placeholder="Enter Name" required>
+                </div>
+                <div class="contact-data">
+                    <label for="number"><b></b>Number:<b></label>
+                        <input type="number" id="number" placeholder="Enter Phone Number" required>
+                </div>
+                <div class="contact-data">
+                    <label for="email"><b>Email:<b></label>
+                        <input type="email" id="email" placeholder="Enter Email " required>
+                </div>
+            
+                <button type="submit" id="save" class="save">Save</button>
+                <div id="msg">
+                    <pre></pre>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    
+    <!-- <input type="text" class="list-input" placeholder="Enter Name">
+    <button class="add-button"> Add</button> -->
+    <!-- <div class="detail" onclick="detail()"></div> -->
+    
+    
+    <ol class="name-list"></ol>
+
+    <div class="details">
+        <h2>Contact Detail</h2>
+        <div class="name">Name: 
+            <input type="text" id="dName" readonly>
+        </div>
+        <div class="number">Number: 
+            <input type="number" id="dNumber" readonly>
+        </div>
+        <div class="email">Email: 
+            <input type="text" id="dEmail" readonly>
+        </div>
+    </div>
+
+
+    <div class="update">
+        <h2>Update Data</h2>
+        <div class="name">Name: 
+            <input type="text" id="uName">
+        </div>
+        <div class="number">Number: 
+            <input type="number" id="uNumber">
+        </div>
+        <div class="email">Email: 
+            <input type="text" id="uEmail">
+        </div>
+        <button type="submit" id="updated" onclick="updateData()">Update</button>
+    </div>
+    
+
+<script src="script.js"></script>
+</body>
+
+</html>
