@@ -115,3 +115,24 @@ li button{
 li{
     cursor: pointer;
 }
+
+
+#findId
+{
+    margin-top: 20px;
+    width: 170px;
+    height: 30px;
+    padding: 12px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.find
+{
+    position: relative;
+    top: 55px;
+    right: 100px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+}
