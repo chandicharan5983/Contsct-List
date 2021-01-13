@@ -130,9 +130,9 @@ function getPosts(){
         data.forEach(function(post){
             key = post._id;
             showData +=`
-            <li>${post.name}
-            <button type"${"button"}" id="${id}" onclick="${"updates(id,key)"}">Update</button>
-            <button type"${"button"}" id="${"d"+id}" onclick="${"deleteUser(key)"}">Delete</button>
+            <li>${post.name} 
+            <button type="button" id="${post._id}" onclick="${"updates(event)"}">Update </button>
+            <button type="button" id="id-${post._id}" onclick="${"deleteUser(event)"}">Delete</button>
             </li>
             `;
             // key = post._id;
@@ -172,21 +172,30 @@ function findContact(){
 
 let newKey;
 
-function updates(id,key){
+function updates(event){
     updatePopup();
-    newKey = key;
-    //console.log("Key: "+ key);
+    //console.log(event);
+    newKey = event.target.id;
+    console.log("Key: "+ newKey);
     fetch("https://phonebookappproject.herokuapp.com/api/phonebook")
     .then((res) => res.json())
     .then((data) => {
         //alert("Update");
-        document.getElementById("uName").value = data[id].name;
-        document.getElementById("uNumber").value = data[id].phoneno;
-        document.getElementById("uEmail").value = data[id].email;
+        for(let i = 0; i < data.length; i++) {
+            //console.log(data[i])
+            if(data[i]._id === newKey) {
+                document.getElementById("uName").value = data[i].name;
+                document.getElementById("uNumber").value = data[i].phoneno;
+                document.getElementById("uEmail").value = data[i].email;
+                break;
+            }
+        }
+        
     });  
 }
 
 function updateData(){
+    console.log("newKey: "+newKey);
     let updateName= document.getElementById("uName").value;
     let updateNo = document.getElementById("uNumber").value;
     let updateEmail = document.getElementById("uEmail").value;
@@ -218,7 +227,7 @@ function updateData(){
 //console.log("id: "+id);
 //document.querySelector(id).addEventListener('click', updates);
 
-function deleteUser(key){
+function deleteUser(event){
     fetch("https://phonebookappproject.herokuapp.com/api/phonebook/delete",{
     method: 'delete',
     mode: 'cors', 
@@ -226,7 +235,7 @@ function deleteUser(key){
         'Accept': 'application/json',
         'Content-type':'application/json'
     },
-    body: JSON.stringify({"id": key})
+    body: JSON.stringify({"id": event.target.id.substring(3)})
     
     })
     .then((resp) =>{
